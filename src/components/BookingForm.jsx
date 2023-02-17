@@ -81,7 +81,7 @@ export default function BookingForm() {
 
         
           <Input
-            label={"Travlers"}
+            label={"Travelers"}
             type={"text"}
             name="travelersCount"
             value={travelersCount}
