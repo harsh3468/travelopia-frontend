@@ -14,13 +14,11 @@ export default function BookingForm() {
     budget: "",
     currency: "",
   };
-
   const [booking, setBooking] = useState(defaultform);
   const { name, email, destination, travelersCount, budget, currency } =
     booking;
 
   const navigate = useNavigate();
-
   const handleChange = (event) => {
     console.log(event.target.value);
     setBooking({ ...booking, [event.target.name]: event.target.value });
