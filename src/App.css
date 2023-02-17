@@ -15,6 +15,7 @@
   border: 2px solid black;
   display: flex;
   flex-direction: column;
+  box-shadow: 3px 3px 4px rgb(58, 57, 57);
 }
 .form__container .destination__container{
   display: flex;
@@ -38,7 +39,7 @@
   margin-left: auto;
   margin-right: auto;
   border: 2px solid black;
-  background-color: aquamarine;
+  background-color: rgb(0, 184, 209);
 }
 
 .home__container{
