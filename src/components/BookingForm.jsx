@@ -20,15 +20,17 @@ export default function BookingForm() {
 
   const navigate = useNavigate();
   const handleChange = (event) => {
-    console.log(event.target.value);
+    
     setBooking({ ...booking, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setBooking(defaultform);
-    const userId = createUserBooking(booking);
-    localStorage.setItem( "id", userId );
+   
+    const userId = await createUserBooking(booking);
+    console.log(userId.data.booking.insertId)
+    localStorage.setItem( "id", userId.data.booking.insertId );
 
     navigate("/booking/detail");
   };

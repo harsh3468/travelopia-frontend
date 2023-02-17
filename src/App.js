@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import BookingDetail from "./components/BookingDetail";
 import BookingForm from "./components/BookingForm";
+import {Home} from "./components/Home"
 axios.defaults.baseURL = "http://localhost:8080"
 function App() {
   return (

@@ -54,5 +54,26 @@
 }
 .details__container{
   margin: auto;
-  text-align: center;
+  box-shadow: 3px 3px 3px ;
+  width: 500px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
+
+.detail__container{
+display: flex;
+flex-direction: row;
+ gap:2rem;
+}
+.detail__container h3{
+  text-align: left;
+  width: 100px;
+  font-weight: 500;
+  }
+  .detail__container p{
+    text-align: right;
+    width: 200px;
+    }

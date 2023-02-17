@@ -1,36 +1,38 @@
 import React, { useEffect, useState } from "react";
-
 import { getUserBookingById } from "../services/user.service";
+import Logo from "../resources/icons/logo.svg";
 export default function BookingDetail() {
-  const [Detail, setDetail] = useState({
-    name: "abc",
-    email: "adsjfkl",
-    destination: "kasld;f",
-    travelersCount: ";ajksfdl ",
-    budget: ";jlkasdf",
-    currency: "alks;dfj;laksd",
-  });
+  const [Detail, setDetail] = useState({});
 
   useEffect(async () => {
     const id = localStorage.getItem("id");
-    setDetail( await getUserBookingById(id));
+    const { data } = await getUserBookingById(id);
+    setDetail({
+      ...data.booking[0],
+    });
   }, []);
-  console.log(Detail);
 
   return (
-    <div>
-      {Detail ? (
-        Object.keys(Detail).map((item) => {
-          return (
-            <div className="details__container">
-              <h2>{item}</h2>
-              <p>{Detail[item]}</p>
-            </div>
-          );
-        })
-      ) : (
-        <></>
-      )}
-    </div>
+    <>
+      <div className="image__container">
+        <img src={Logo} alt="TravelOpia" />
+      </div>
+      <div className="details__container">
+        {Detail ? (
+          Object.keys(Detail).map((item) => {
+            return (
+              <div className="detail__container" key={item}>
+                <h3>{item.toUpperCase()}</h3>
+                <div>
+                  <p>{Detail[item]}</p>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <></>
+        )}
+      </div>
+    </>
   );
 }
