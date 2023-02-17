@@ -7,5 +7,5 @@ export const createUserBooking = (booking)=>{
 
 export const getUserBookingById = (userId)=>
 {
-    axios.post("/booking/details",userId);
+    axios.get("/booking/details",userId);
 }

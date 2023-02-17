@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   createUserBooking,
-  getUserBookingById,
 } from "../services/user.service";
 import { Input } from "./Input";
+import Logo  from "../resources/icons/logo.svg"
 export default function BookingForm() {
   const defaultform = {
     name: "",
@@ -14,6 +14,7 @@ export default function BookingForm() {
     budget: "",
     currency: "",
   };
+
   const [booking, setBooking] = useState(defaultform);
   const { name, email, destination, travelersCount, budget, currency } =
     booking;
@@ -29,14 +30,17 @@ export default function BookingForm() {
     event.preventDefault();
     setBooking(defaultform);
     const userId = createUserBooking(booking);
-    localStorage.setItem({ id: userId });
+    localStorage.setItem( "id", userId );
 
     navigate("/booking/detail");
   };
 
   return (
-    <>
     
+    <div className="home__container"> 
+    <div className="image__container">
+       <img src={Logo} alt="TravelOpia" />
+    </div>
       <form onSubmit={handleSubmit} className="form__container" >
         
           <Input
@@ -69,9 +73,9 @@ export default function BookingForm() {
             value={destination}
             name="destination"
           >
-            <option key={1}>INDIA</option>
-            <option key={2}>AFRICA</option>
-            <option key={3}>EUROPE</option>
+            <option key={1} value={"India"}>INDIA</option>
+            <option key={2} value={"Africa"}>AFRICA</option>
+            <option key={3} value={"Europe"}>EUROPE</option>
           </select>
         </div>
 
@@ -109,6 +113,6 @@ export default function BookingForm() {
         <button type="submit">Submit</button>
       </form>
       
-    </>
+      </div>
   );
 }
