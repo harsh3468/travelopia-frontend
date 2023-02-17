@@ -4,7 +4,7 @@ import {
   createUserBooking,
   getUserBookingById,
 } from "../services/user.service";
-
+import { Input } from "./Input";
 export default function BookingForm() {
   const defaultform = {
     name: "",
@@ -16,12 +16,10 @@ export default function BookingForm() {
   };
   
   const [booking, setBooking] = useState(defaultform);
-  
   const { name, email, destination, travelersCount, budget, currency } =
     booking;
 
   const navigate = useNavigate();
-  
   const handleChange = (event) => {
     console.log(event.target.value);
     setBooking({ ...booking, [event.target.name]: event.target.value });
@@ -38,32 +36,33 @@ export default function BookingForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-
-        <div>
-          <label htmlFor="">Name</label>
-          <input
+    
+      <form onSubmit={handleSubmit} className="form__container" >
+        
+          <Input
+            label={"Name"}
             type={"text"}
             name="name"
             value={name}
             onChange={handleChange}
             required
-          ></input>
-        </div>
+            email
+          />
+        
 
-        <div>
-          <label htmlFor="">Email</label>
-          <input
+     
+          <Input
+            label={"Email"}
             type={"text"}
             name="email"
             value={email}
             onChange={handleChange}
             required
             email
-          ></input>
-        </div>
+          />
+       
 
-        <div>
+        <div className="destination__container">
           <label htmlFor="">Destination</label>
           <select
             onChange={handleChange}
@@ -76,40 +75,40 @@ export default function BookingForm() {
           </select>
         </div>
 
-        <div>
-          <label htmlFor="">TravlersCount</label>
-          <input
+        
+          <Input
+            label={"Travlers"}
             type={"text"}
             name="travelersCount"
             value={travelersCount}
             onChange={handleChange}
-          ></input>
-        </div>
+          />
+        
 
-        <div>
-          <label htmlFor="">Budget</label>
-          <input
+        
+          <Input
+            label={"Budget"}
             type={"text"}
             name="budget"
             value={budget}
             onChange={handleChange}
             required
-          ></input>
-        </div>
+          />
+      
 
-        <div>
-          <label htmlFor="">Currency</label>
-          <input
+       
+          <Input
+            label={"Currency"}
             type={"text"}
             name="currency"
             value={currency}
             onChange={handleChange}
             required
-          ></input>
-        </div>
-
+          />
+        
         <button type="submit">Submit</button>
       </form>
+      
     </>
   );
 }
